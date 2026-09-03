@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Beezie dark theme. Every brand colour, radius and elevation used by a
+  component must be declared here — components never inline a raw hex.
+*/
+:root {
+  /* Surface ramp: page -> raised card -> hovered card -> overlay scrim */
+  --surface-0: oklch(0.145 0.004 285);
+  --surface-1: oklch(0.185 0.005 285);
+  --surface-2: oklch(0.225 0.006 285);
+  --surface-3: oklch(0.268 0.007 285);
+  --scrim: oklch(0.09 0.004 285 / 0.88);
+
+  --border: oklch(0.288 0.008 285);
+  --border-strong: oklch(0.365 0.01 285);
+
+  --foreground: oklch(0.985 0 0);
+  --foreground-muted: oklch(0.76 0.008 285);
+  --foreground-subtle: oklch(0.68 0.008 285);
+
+  /* Amber accent drives every primary action (Start Now, Confirm, Swap). */
+  --accent: oklch(0.789 0.155 78);
+  --accent-hover: oklch(0.83 0.158 80);
+  --accent-foreground: oklch(0.16 0.01 60);
+
+  /* Green accent is reserved for monetary value figures. */
+  --value: oklch(0.79 0.176 155);
+  --value-foreground: oklch(0.18 0.03 155);
+
+  --danger: oklch(0.74 0.17 25);
+  --danger-foreground: oklch(0.16 0.02 25);
+
+  /* Rarity pairs — a rarity always renders with the same fg/bg everywhere. */
+  --rarity-ultra-rare: oklch(0.78 0.16 305);
+  --rarity-ultra-rare-bg: oklch(0.28 0.08 305);
+  --rarity-rare: oklch(0.82 0.13 250);
+  --rarity-rare-bg: oklch(0.25 0.07 250);
+  --rarity-uncommon: oklch(0.79 0.15 160);
+  --rarity-uncommon-bg: oklch(0.27 0.06 160);
+  --rarity-common: oklch(0.75 0.03 250);
+  --rarity-common-bg: oklch(0.27 0.012 250);
+  --rarity-base: oklch(0.8 0.035 70);
+  --rarity-base-bg: oklch(0.25 0.015 70);
+
+  --radius: 0.75rem;
+
+  --elevation-card: 0 1px 2px oklch(0 0 0 / 0.4);
+  --elevation-raised: 0 8px 24px -8px oklch(0 0 0 / 0.6);
+  --elevation-overlay: 0 24px 64px -12px oklch(0 0 0 / 0.75);
+
+  /* shadcn primitives read these names. */
+  --background: var(--surface-0);
+  --card: var(--surface-1);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--foreground);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--foreground-muted);
+  --destructive: var(--danger);
+  --input: var(--surface-2);
+  --ring: var(--accent);
+}
+
+@theme inline {
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-scrim: var(--scrim);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-value: var(--value);
+  --color-value-foreground: var(--value-foreground);
+
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+
+  --color-rarity-ultra-rare: var(--rarity-ultra-rare);
+  --color-rarity-ultra-rare-bg: var(--rarity-ultra-rare-bg);
+  --color-rarity-rare: var(--rarity-rare);
+  --color-rarity-rare-bg: var(--rarity-rare-bg);
+  --color-rarity-uncommon: var(--rarity-uncommon);
+  --color-rarity-uncommon-bg: var(--rarity-uncommon-bg);
+  --color-rarity-common: var(--rarity-common);
+  --color-rarity-common-bg: var(--rarity-common-bg);
+  --color-rarity-base: var(--rarity-base);
+  --color-rarity-base-bg: var(--rarity-base-bg);
+
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 12px);
+
+  --shadow-card: var(--elevation-card);
+  --shadow-raised: var(--elevation-raised);
+  --shadow-overlay: var(--elevation-overlay);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--surface-0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    /* Belt and braces against iOS Safari rubber-banding under the scrim. */
+    overscroll-behavior-y: none;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Only ever hidden for pointer users; keyboard focus always shows a ring. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@utility scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--surface-3);
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/*
+  Global reduced-motion guard. Components that orchestrate motion in JS read
+  the same preference via useReducedMotion; this covers everything using
+  plain CSS transitions so neither path can be forgotten.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
